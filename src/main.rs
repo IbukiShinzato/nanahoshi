@@ -1,3 +1,13 @@
+use std::env;
+use std::fs;
+
 fn main() {
-    println!("Hello, world!");
+    let path = env::args().nth(1).expect("ELF file required");
+
+    let data = fs::read(path).expect("failed to read file");
+
+    println!("{:02x}", data[0]);
+    println!("{:02x}", data[1]);
+    println!("{:02x}", data[2]);
+    println!("{:02x}", data[3]);
 }
